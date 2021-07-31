@@ -2,4 +2,7 @@
 node_modules
 
 # Files
+
+# Database
 database.sqlite
+database.test.sqlite
