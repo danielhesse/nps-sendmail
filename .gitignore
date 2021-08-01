@@ -2,6 +2,7 @@
 node_modules
 
 # Files
+.env
 
 # Database
 database.sqlite
