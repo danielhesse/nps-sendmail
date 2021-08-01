@@ -27,7 +27,7 @@ export class SendMailController {
     }
 
     const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
-      where: [{ user_id: checkUserExists.id }, { value: null }],
+      where: { user_id: checkUserExists.id, value: null },
       relations: ["user", "survey"],
     });
 
@@ -58,9 +58,6 @@ export class SendMailController {
     });
 
     await surveysUsersRepository.save(surveyUser);
-
-
-
 
     await EtherealMailService.execute({
       to: { email },
