@@ -32,7 +32,7 @@ export class SendMailController {
     });
 
     const path = resolve(__dirname, "..", "templates", "emails", "nps_mail.hbs");
-    const { name, id } = checkUserExists;
+    const { name } = checkUserExists;
     const { title, description } = checkSurveyExists;
 
     if (surveyUserAlreadyExists) {
@@ -40,7 +40,7 @@ export class SendMailController {
         to: { email },
         subject: title,
         variables: {
-          user_id: id,
+          id: surveyUserAlreadyExists.id,
           name,
           title,
           description,
@@ -63,7 +63,7 @@ export class SendMailController {
       to: { email },
       subject: title,
       variables: {
-        user_id: id,
+        id: surveyUser.id,
         name,
         title,
         description,
