@@ -1,8 +1,10 @@
-<h1 align="center">NPS-SendMail</h1>
+<center>
 
-<p align="center">
-  <img alt="Happy" src=".github/preview.png" width="100%">
-</p>
+# NPS-SendMail
+![Badge](https://img.shields.io/static/v1?label=DH&message=DOSOMETHINGGREAT&color=0070f3&style=<0070f3>&logo=rocket)
+
+<img alt="Happy" src=".github/preview.png" width="100%" />
+</center>
 
 ## 💻 Projeto
 
@@ -14,13 +16,14 @@ Esse projeto foi desenvolvido durante a trilha de NodeJS, na quarta edição da 
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [TypeScript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/pt-br/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [TypeORM](https://typeorm.io/#/)
-- [SQL Editor Beekeeper Studio](https://www.beekeeperstudio.io/)
 - [Ethereal-Email](https://ethereal.email/)
 - [Jest](https://jestjs.io/)
 - [Yup](https://www.npmjs.com/package/yup?activeTab=readme)
+- [SQL Editor Beekeeper Studio](https://www.beekeeperstudio.io/)
 
 ## 🔗 Requisitos básicos
 
@@ -43,9 +46,9 @@ Siga as instruções abaixo para baixar e usar o projeto deste repositório:
 
 ```bash
 # Clone this repository using SSH
-$ git clone git@github.com:daniel21h/nps-sendmail.git
+$ git clone git@github.com:danielhessell/nps-sendmail.git
 # or clone using https
-$ git clone https://github.com/daniel21h/nps-sendmail.git
+$ git clone https://github.com/danielhessell/nps-sendmail.git
 
 # Go into the repository
 $ cd nps-sendmail
@@ -58,6 +61,9 @@ $ yarn typeorm migration:run
 
 # Run project
 $ yarn dev:server
+
+# Run project tests
+$ yarn test
 ```
 
 ---
