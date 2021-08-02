@@ -12,7 +12,7 @@ export class UsersController {
     });
 
     try {
-      await schema.validate(request.body, { abortEarly: false })
+      await schema.validate(request.body, { abortEarly: false });
     } catch (err) {
       return response.status(400).json({ error: err });
     }

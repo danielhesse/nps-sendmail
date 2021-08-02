@@ -6,8 +6,7 @@
   "scripts": {
     "dev:server": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "tsnd node_modules/typeorm/cli.js",
-    "test": "NODE_ENV=test jest --detectOpenHandles",
-    "posttest": "rm ./src/database/database.test.sqlite"
+    "test": "NODE_ENV=test jest -i"
   },
   "dependencies": {
     "express": "^4.17.1",
