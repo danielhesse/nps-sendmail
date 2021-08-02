@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
 import { AppError } from "../errors/AppError";
-import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
+import { AnswersRepository } from "../repositories/AnswersRepository";
 
 export class AnswersController {
-  async execute(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     const { value } = request.params;
     const { u } = request.query;
 
-    const surveysUsersRepository = getCustomRepository(SurveysUsersRepository);
+    const answersRepository = getCustomRepository(AnswersRepository);
 
-    const surveyUser = await surveysUsersRepository.findOne({
+    const surveyUser = await answersRepository.findOne({
       id: u as string,
     })
 
@@ -20,7 +20,7 @@ export class AnswersController {
 
     surveyUser.value = Number(value);
 
-    await surveysUsersRepository.save(surveyUser);
+    await answersRepository.save(surveyUser);
 
     return response.json(surveyUser);
   }

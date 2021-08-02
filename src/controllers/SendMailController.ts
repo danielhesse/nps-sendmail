@@ -2,18 +2,18 @@ import { Request, Response } from "express";
 import { resolve } from "path";
 import { getCustomRepository } from "typeorm";
 import { AppError } from "../errors/AppError";
+import { AnswersRepository } from "../repositories/AnswersRepository";
 import { SurveysRepository } from "../repositories/SurveysRepository";
-import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
 import { UsersRepository } from "../repositories/UsersRepository";
 import EtherealMailService from "../services/EtherealMailService";
 
 export class SendMailController {
-  async execute(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     const { survey_id, email } = request.body;
 
+    const answersRepository = getCustomRepository(AnswersRepository);
     const usersRepository = getCustomRepository(UsersRepository);
     const surveysRepository = getCustomRepository(SurveysRepository);
-    const surveysUsersRepository = getCustomRepository(SurveysUsersRepository);
 
     const checkSurveyExists = await surveysRepository.findOne(survey_id);
 
@@ -27,7 +27,7 @@ export class SendMailController {
       throw new AppError("User does not exists!");
     }
 
-    const surveyUserAlreadyExists = await surveysUsersRepository.findOne({
+    const surveyUserAlreadyExists = await answersRepository.findOne({
       where: { user_id: checkUserExists.id, value: null },
       relations: ["user", "survey"],
     });
@@ -53,12 +53,12 @@ export class SendMailController {
       return response.json(surveyUserAlreadyExists);
     }
 
-    const surveyUser = surveysUsersRepository.create({
+    const surveyUser = answersRepository.create({
       user_id: checkUserExists.id,
       survey_id,
     });
 
-    await surveysUsersRepository.save(surveyUser);
+    await answersRepository.save(surveyUser);
 
     await EtherealMailService.execute({
       to: { email },

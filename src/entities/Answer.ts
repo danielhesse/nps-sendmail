@@ -3,8 +3,8 @@ import { v4 as uuid } from "uuid";
 import { Survey } from "./Survey";
 import { User } from "./User";
 
-@Entity("surveys_users")
-export class SurveyUser {
+@Entity("answers")
+export class Answer {
   @PrimaryColumn()
   readonly id: string;
 

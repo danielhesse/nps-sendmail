@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { getCustomRepository, Not, IsNull } from "typeorm";
-import { SurveysUsersRepository } from "../repositories/SurveysUsersRepository";
+import { getCustomRepository, IsNull, Not } from "typeorm";
+import { AnswersRepository } from "../repositories/AnswersRepository";
 
-export class NpsController {
-  async execute(request: Request, response: Response) {
+export class NPSController {
+  async handle(request: Request, response: Response) {
     const { survey_id } = request.params;
 
-    const surveysUsersRepository = getCustomRepository(SurveysUsersRepository);
+    const answersRepository = getCustomRepository(AnswersRepository);
 
-    const surveysUsers = await surveysUsersRepository.find({
+    const surveysUsers = await answersRepository.find({
       survey_id,
       value: Not(IsNull()),
     });

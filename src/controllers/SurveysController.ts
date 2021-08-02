@@ -3,6 +3,7 @@ import { getCustomRepository } from "typeorm";
 import { SurveysRepository } from "../repositories/SurveysRepository";
 
 export class SurveysController {
+
   async index(_: Request, response: Response) {
     const surveysRepository = getCustomRepository(SurveysRepository);
 
